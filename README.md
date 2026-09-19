@@ -11,7 +11,7 @@ Proyek ini mengadopsi arsitektur pipeline end-to-end Machine Learning:
 - Data Ingestion & Preprocessing — Memuat data mentah, membersihkan data yang tidak valid, menangani missing values, dan melakukan feature engineering untuk menyesuaikan input dengan skema yang dibutuhkan oleh model.
 - Machine Learning Model — Script modular digunakan untuk melakukan pelacakan (tracking) menggunakan MLflow. Model dilatih, dievaluasi, dan model terbaik (LightGBM) diserialisasi ke dalam bentuk .pkl agar dapat digunakan ulang di lingkungan production.
 - Aplikasi Frontend (Streamlit) — Antarmuka web interaktif. Pengguna memasukkan data nasabah melalui form (demografi, informasi finansial, kartu kredit, dan pinjaman). Karena model telah menampung konfigurasi pelatihannya, aplikasi langsung memuat artefak model dan memproses inferensi (prediksi) tanpa memerlukan layanan backend terpisah.
-- 
+
 ## Struktur Repositori
 
 ```text
