@@ -27,11 +27,17 @@ Credit-Score-Classifier/
 ├── models/                            # Folder penyimpanan artefak model
 ├── mlruns/                            # Folder MLflow tracking untuk metrik dan eksperimen
 └── requirements.txt                   # Daftar dependensi library Python
+```
 
 # Menjalankan Aplikasi (Deployment Lokal)
 Aplikasi inferensi dapat berjalan di mesin lokal Anda. Pastikan artefak model (models/model_lightgbm.pkl) sudah ada sebelum menjalankan aplikasi.
-"streamlit run app_streamlit.py"
-Akses aplikasi melalui browser pada alamat http://localhost:8501.
+```text
+streamlit run app_streamlit.py
+```
+Akses aplikasi melalui browser pada alamat 
+```text
+http://localhost:8501.
+```
 
 # Cara Kerja Prediksi
 Pada antarmuka Streamlit, pengguna akan diarahkan untuk mengisi metrik nasabah yang dibagi menjadi beberapa kategori form: Pendapatan & Demografi, Akun Bank & Kartu Kredit, serta Pinjaman & Riwayat Pembayaran.
