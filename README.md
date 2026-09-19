@@ -1,46 +1,64 @@
 # Credit Score Prediction
 
-Repositori ini memuat proyek end-to-end Machine Learning yang dirancang untuk mengklasifikasikan skor kredit (credit score) nasabah ke dalam kategori Poor, Standard, atau Good berdasarkan data demografi, finansial, dan perilaku pembayaran. Sistem ini telah di-deploy sebagai aplikasi web menggunakan Streamlit untuk prediksi secara real-time.
+This repository contains an **end-to-end Machine Learning project** for classifying customer credit scores into three categories: **Poor, Standard, or Good**. The prediction is based on customer demographic, financial, and payment behavior data.
 
-# Gambaran Project
+The trained model is also deployed as a **Streamlit web application** for real-time credit score prediction.
 
-Sistem ini dibangun untuk mempercepat dan menstandardisasi penilaian risiko kredit. Dengan memprediksi profil risiko pelanggan secara otomatis, sistem ini memungkinkan analis atau institusi keuangan untuk mengambil keputusan kredit dengan lebih cepat dan objektif, serta membantu memberikan indikasi awal untuk profil pendaftar berisiko tinggi. Berdasarkan hasil evaluasi metrik Macro F1-Score pada tahapan Eksplorasi Data (EDA), model klasifikasi terbaik yang diimplementasikan dalam sistem ini adalah LightGBM.
+# Project Overview
 
-# Arsitektur Aplikasi
-Proyek ini mengadopsi arsitektur pipeline end-to-end Machine Learning:
-- Data Ingestion & Preprocessing — Memuat data mentah, membersihkan data yang tidak valid, menangani missing values, dan melakukan feature engineering untuk menyesuaikan input dengan skema yang dibutuhkan oleh model.
-- Machine Learning Model — Script modular digunakan untuk melakukan pelacakan (tracking) menggunakan MLflow. Model dilatih, dievaluasi, dan model terbaik (LightGBM) diserialisasi ke dalam bentuk .pkl agar dapat digunakan ulang di lingkungan production.
-- Aplikasi Frontend (Streamlit) — Antarmuka web interaktif. Pengguna memasukkan data nasabah melalui form (demografi, informasi finansial, kartu kredit, dan pinjaman). Karena model telah menampung konfigurasi pelatihannya, aplikasi langsung memuat artefak model dan memproses inferensi (prediksi) tanpa memerlukan layanan backend terpisah.
+This system is designed to make the credit risk assessment process faster and more consistent. By automatically predicting a customer's credit profile, the system can provide an early indication of potential credit risk.
 
-## Struktur Repositori
+Based on the **Macro F1-Score** evaluation during the Exploratory Data Analysis (EDA) stage, **LightGBM** was selected as the best classification model implemented in this project.
+
+# Application Architecture
+
+The project uses an end-to-end Machine Learning pipeline:
+
+* **Data Ingestion & Preprocessing** — Loads the raw data, cleans invalid data, handles missing values, and performs feature engineering to prepare the data for the model.
+* **Machine Learning Model** — Uses modular scripts for model training and experiment tracking with MLflow. The trained models are evaluated, and the selected LightGBM model is saved as a `.pkl` file for later use.
+* **Streamlit Application** — Provides an interactive web interface where users can enter customer information and receive a credit score prediction directly.
+
+## Repository Structure
 
 ```text
 Credit-Score-Classifier/
-├── EksplorasiDataDanModelling.ipynb  # Notebook proses EDA, komparasi model, dan hyperparameter tuning
-├── data_ingestion.py                 # Script untuk memuat dan menyiapkan data mentah
-├── preprocessing.py                   # Script pembersihan data dan feature engineering
-├── training.py                        # Script pelatihan model ML
-├── evaluation.py                      # Script evaluasi metrik performa model
-├── inference.py                       # Script pengujian inferensi model
-├── pipeline.py                        # Orchestrator alur end-to-end (ingestion hingga evaluation)
-├── app_streamlit.py                   # Script utama aplikasi antarmuka Streamlit
-├── models/                            # Folder penyimpanan artefak model
-├── mlruns/                            # Folder MLflow tracking untuk metrik dan eksperimen
-└── requirements.txt                   # Daftar dependensi library Python
+├── EksplorasiDataDanModelling.ipynb  # EDA, model comparison, and hyperparameter tuning
+├── data_ingestion.py                 # Loads and prepares the raw data
+├── preprocessing.py                  # Data cleaning and feature engineering
+├── training.py                        # Model training
+├── evaluation.py                      # Model performance evaluation
+├── inference.py                       # Model inference testing
+├── pipeline.py                        # End-to-end ML pipeline
+├── app_streamlit.py                   # Main Streamlit application
+├── models/                            # Saved model files
+├── mlruns/                            # MLflow experiment tracking
+└── requirements.txt                   # Required Python libraries
 ```
 
-# Menjalankan Aplikasi (Deployment Lokal)
-Aplikasi inferensi dapat berjalan di mesin lokal Anda. Pastikan artefak model (models/model_lightgbm.pkl) sudah ada sebelum menjalankan aplikasi.
-```text
+# Running the Application
+
+The application can be run locally. Make sure the model file `models/model_lightgbm.pkl` is available before starting the application.
+
+```bash
 streamlit run app_streamlit.py
 ```
-Akses aplikasi melalui browser pada alamat 
+
+Open the application in your browser:
+
 ```text
-http://localhost:8501.
+http://localhost:8501
 ```
 
-# Cara Kerja Prediksi
-Pada antarmuka Streamlit, pengguna akan diarahkan untuk mengisi metrik nasabah yang dibagi menjadi beberapa kategori form: Pendapatan & Demografi, Akun Bank & Kartu Kredit, serta Pinjaman & Riwayat Pembayaran.
-Saat form di-submit, fungsi predict() akan mengonversi parameter input pengguna menjadi DataFrame, mencocokkan skema dengan format saat training, lalu menjalankan model.predict() beserta probabilitas kelasnya (predict_proba()). Hasil akhirnya (skor kredit Poor, Standard, atau Good) langsung ditampilkan di layar pengguna.
+# How the Prediction Works
 
+In the Streamlit application, users enter customer information through several sections:
 
+* **Income & Demographic Information**
+* **Bank Account & Credit Card Information**
+* **Loan & Payment History**
+
+After the form is submitted, the input data is converted into a DataFrame and prepared using the same format used during model training.
+
+The LightGBM model then performs the prediction and calculates the class probabilities. The final result is displayed as one of three credit score categories:
+
+**Poor · Standard · Good**
