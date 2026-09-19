@@ -11,20 +11,22 @@ Proyek ini mengadopsi arsitektur pipeline end-to-end Machine Learning:
 - Data Ingestion & Preprocessing — Memuat data mentah, membersihkan data yang tidak valid, menangani missing values, dan melakukan feature engineering untuk menyesuaikan input dengan skema yang dibutuhkan oleh model.
 - Machine Learning Model — Script modular digunakan untuk melakukan pelacakan (tracking) menggunakan MLflow. Model dilatih, dievaluasi, dan model terbaik (LightGBM) diserialisasi ke dalam bentuk .pkl agar dapat digunakan ulang di lingkungan production.
 - Aplikasi Frontend (Streamlit) — Antarmuka web interaktif. Pengguna memasukkan data nasabah melalui form (demografi, informasi finansial, kartu kredit, dan pinjaman). Karena model telah menampung konfigurasi pelatihannya, aplikasi langsung memuat artefak model dan memproses inferensi (prediksi) tanpa memerlukan layanan backend terpisah.
+- 
+## Struktur Repositori
 
-# Struktur Repositori
-.
-├── EksplorasiDataDanModelling.ipynb       # Notebook proses EDA, komparasi model, dan hyperparameter tuning
-├── data_ingestion.py                      # Script untuk memuat dan menyiapkan data mentah
-├── preprocessing.py                       # Script pembersihan data dan feature engineering
-├── training.py                            # Script pelatihan model ML
-├── evaluation.py                          # Script evaluasi metrik performa model
-├── inference.py                           # Script pengujian inferensi model
-├── pipeline.py                            # Orchestrator alur end-to-end (ingestion hingga evaluation)
-├── app_streamlit.py                       # Script utama aplikasi antarmuka Streamlit
-├── models/                                # Folder penyimpanan artefak model
-├── mlruns/                                # Folder MLflow tracking untuk metrik dan eksperimen
-└── requirements.txt                       # Daftar dependensi library Python
+```text
+Credit-Score-Classifier/
+├── EksplorasiDataDanModelling.ipynb  # Notebook proses EDA, komparasi model, dan hyperparameter tuning
+├── data_ingestion.py                 # Script untuk memuat dan menyiapkan data mentah
+├── preprocessing.py                   # Script pembersihan data dan feature engineering
+├── training.py                        # Script pelatihan model ML
+├── evaluation.py                      # Script evaluasi metrik performa model
+├── inference.py                       # Script pengujian inferensi model
+├── pipeline.py                        # Orchestrator alur end-to-end (ingestion hingga evaluation)
+├── app_streamlit.py                   # Script utama aplikasi antarmuka Streamlit
+├── models/                            # Folder penyimpanan artefak model
+├── mlruns/                            # Folder MLflow tracking untuk metrik dan eksperimen
+└── requirements.txt                   # Daftar dependensi library Python
 
 # Menjalankan Aplikasi (Deployment Lokal)
 Aplikasi inferensi dapat berjalan di mesin lokal Anda. Pastikan artefak model (models/model_lightgbm.pkl) sudah ada sebelum menjalankan aplikasi.
