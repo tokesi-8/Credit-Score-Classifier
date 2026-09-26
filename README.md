@@ -1,12 +1,14 @@
 # Credit Score Prediction
 
-This repository contains an **end-to-end Machine Learning project** for classifying customer credit scores into three categories: **Poor, Standard, or Good**. The prediction is based on customer demographic, financial, and payment behavior data.
+An end-to-end **Machine Learning project** for classifying customer credit scores into three categories: **Poor, Standard, and Good**. The system uses customer demographic, financial, and payment behavior data to predict credit score categories.
 
-The trained model is also deployed as a **Streamlit web application** for real-time credit score prediction.
+The project covers the complete machine learning workflow, including **data preprocessing, feature engineering, model development, experiment tracking with MLflow, model inference, and web deployment using Streamlit**.
 
 # Project Overview
 
 This system is designed to make the credit risk assessment process faster and more consistent. By automatically predicting a customer's credit profile, the system can provide an early indication of potential credit risk.
+The project follows an end-to-end workflow:
+**Data → Preprocessing → Model Training → Experiment Tracking → Model Selection → Inference → Deployment**
 
 Based on the **Macro F1-Score** evaluation during the Exploratory Data Analysis (EDA) stage, **LightGBM** was selected as the best classification model implemented in this project.
 
@@ -31,6 +33,8 @@ Credit-Score-Classifier/
 ├── pipeline.py                        # End-to-end ML pipeline
 ├── app_streamlit.py                   # Main Streamlit application
 ├── models/                            # Saved model files
+    ├── model_lightgbm.pkl
+    └── model_xgboost.pkl
 ├── mlruns/                            # MLflow experiment tracking
 └── requirements.txt                   # Required Python libraries
 ```
@@ -62,3 +66,4 @@ After the form is submitted, the input data is converted into a DataFrame and pr
 The LightGBM model then performs the prediction and calculates the class probabilities. The final result is displayed as one of three credit score categories:
 
 **Poor · Standard · Good**
+
