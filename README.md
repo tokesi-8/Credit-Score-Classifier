@@ -23,25 +23,16 @@
   - Good
     
 - Because the target classes are not perfectly balanced, Macro F1-Score is used as the primary evaluation metric to measure performance across all classes more evenly.
+
   
 ## Project Flow
 
-**EDA & Modeling**
-↓
-**Model Comparison & Tuning**
-↓
-**Top 3 Model Selection**
-↓
-**End-to-End Local Pipeline**
-↓
-**Local Streamlit Inference**
-↓
-**AWS SageMaker Deployment**
-↓
-**SageMaker Endpoint**
-↕
-**Streamlit on EC2**
-↓
+**EDA & Modeling** → **Model Comparison & Tuning** → **Top 3 Model Selection**  
+↓  
+**End-to-End Local Pipeline** → **Local Streamlit Inference** → **AWS SageMaker**  
+↓  
+**SageMaker Endpoint** ← **Streamlit on EC2**  
+↓  
 **Final Prediction**
 
 
