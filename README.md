@@ -55,6 +55,19 @@ All preprocessing steps are fitted on the training set only to prevent data leak
 ![Dashboard Overview](images/3.png)
 - **LightGBM** achieved the best performance, with **71.84%** Accuracy and **69.97%** Macro F1-Score, making it the selected model for deployment.
 - **LightGBM** performed best on the Standard class with an F1-Score of 0.75, followed by Poor (0.72) and Good (0.63).
+### From Notebook to Production
+
+**1. Local end-to-end pipeline**
+
+After the models were trained and saved as `.pkl` files, the whole process was rebuilt as an **OOP end-to-end pipeline** that runs locally first. Each step is a separate class (`DataIngestion`, `DataPreprocessing`, `ModelTrainer`, `ModelEvaluator`) and all of them are orchestrated by `pipeline.py` (`CreditScorePipeline`), which runs ingestion, preprocessing, training, evaluation, and model comparison in one execution. Preprocessing and the model are saved together as one scikit-learn pipeline, and every run is tracked with MLflow.
+
+**2. Local application**
+
+Once the orchestration code was in place, `app_streamlit.py` was created as the user interface. It loads the saved `.pkl` model, takes the customer's financial profile as input, and returns the predicted credit score with its class probabilities.
+
+**3. Cloud deployment**
+
+For the cloud version, the end-to-end pipeline was adapted in a **SageMaker notebook**, and the trained model was deployed as a **SageMaker endpoint**. The `app_streamlit.py` file is then deployed on **EC2**, so predictions are no longer made locally: Streamlit sends the input to the deployed SageMaker endpoint and displays the result. This keeps the model service and the user interface separate.
 
 ## Repository Structure
 
