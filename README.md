@@ -1,4 +1,4 @@
-# Credit Score Prediction
+# Credit Score Prediction : End-To-End Machine Learning Deployment
 
 An end-to-end **Machine Learning project** for classifying customer credit scores into three categories: **Poor, Standard, and Good**. The system uses customer demographic, financial, and payment behavior data to predict credit score categories.
 
