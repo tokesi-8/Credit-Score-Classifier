@@ -1,7 +1,3 @@
-"""
-python -m streamlit run app_streamlit.py
-"""
-
 from __future__ import annotations
 from pathlib import Path
 import joblib
@@ -272,3 +268,5 @@ if submitted:
 	#Error Handling
     except Exception as e:
         st.error(f"Prediction failed: {e}")
+
+# For Running From Terminal -> python -m streamlit run app_streamlit.py
