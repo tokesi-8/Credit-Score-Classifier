@@ -5,7 +5,7 @@
 ![Dashboard Overview](images/2.png)
 
 
-🔗 **Live Dashboard:** [credit-score-prediction-tokesi-8.streamlit.app(https://credit-score-prediction-tokesi-8.streamlit.app/)
+🔗 **Live Dashboard:** [credit-score-prediction-tokesi-8.streamlit.app](https://credit-score-prediction-tokesi-8.streamlit.app/)
 
 - Credit Score Classifier is an end-to-end Machine Learning project that classifies customers into three credit score categories: Poor, Standard, and Good.
 - The project starts with EDA and model experimentation in a Jupyter Notebook, followed by the development of a reproducible end-to-end ML pipeline, local inference through Streamlit, and cloud deployment using AWS SageMaker and EC2.
