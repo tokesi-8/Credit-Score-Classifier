@@ -12,7 +12,6 @@
 
 
 
-
 ## Background Problem
 - Financial institutions need to assess the credit performance of their customers efficiently and consistently.
 - Manual credit assessment can be time-consuming, especially when dealing with a large number of customers. This project applies a data-driven classification approach to automatically assess customer credit profiles based on their financial, credit, and payment behavior.
@@ -57,6 +56,11 @@ The dataset contains **24,998 customer records** with **21 features** covering d
 * **Data split:** 80% training, 20% testing
 * **Preprocessing:** Missing-value handling, feature transformation, encoding, scaling, and outlier treatment
 
+## Insights
+![Dashboard Overview](images/3.png)
+- **LightGBM** achieved the best performance, with **71.84%** Accuracy and **69.97%** Macro F1-Score, making it the selected model for deployment.
+- **LightGBM** performed best on the Standard class with an F1-Score of 0.75, followed by Poor (0.72) and Good (0.63).
+
 
 ## Repository Structure
 
@@ -91,20 +95,6 @@ Credit-Score-Classifier/
 │  
 ├── README.md                                   # Project documentation
 └── requirements.txt                            # Project dependencies
-```
-
-## Running the Application Locally
-
-The application can be run locally. Make sure the model file `models/model_lightgbm.pkl` is available before starting the application.
-
-```bash
-streamlit run app_streamlit.py
-```
-
-Open the application in your browser:
-
-```text
-http://localhost:8501
 ```
 
 # Tech Stack
