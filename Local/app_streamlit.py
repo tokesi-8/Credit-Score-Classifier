@@ -55,7 +55,8 @@ def load_model():
         return model, None
 
     except Exception as e:
-        return None, f"{type(e).__name__}: {repr(e)}"
+        import traceback
+        return None, traceback.format_exc()
 
 #fungsi untuk predict
 def predict(model, values: dict):
