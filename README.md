@@ -38,9 +38,12 @@
 ↓
 **AWS SageMaker Deployment**
 ↓
-**SageMaker Endpoint** ← **Streamlit on EC2**
+**SageMaker Endpoint**
+↕
+**Streamlit on EC2**
 ↓
 **Final Prediction**
+
 
 ## Development Stages
 
