@@ -3,7 +3,7 @@ set -eu
 
 # -------- EDIT THESE -----------------------------------------------------
 GIT_REPO="https://github.com/tokesi-8/Credit-Score-Classifier.git"
-SUBFOLDER="AWS"                  # path inside repo; leave empty if app at root
+SUBFOLDER="AWS"
 APP_FILE="app_streamlit.py"
 ENDPOINT_NAME="CreditScore-endpoint"
 # -------------------------------------------------------------------------
