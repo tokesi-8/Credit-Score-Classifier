@@ -1,7 +1,3 @@
-"""
-Run: $ python -m streamlit run app_streamlit.py
-"""
-
 from __future__ import annotations
 
 import json
