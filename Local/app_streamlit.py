@@ -49,10 +49,13 @@ ALL_MODEL_COLS = [
 def load_model():
     if not MODEL_PATH.exists():
         return None, f"Model file not found at {MODEL_PATH}"
+
     try:
-        return joblib.load(MODEL_PATH), None
-	except Exception as e:
-	    return None, f"{type(e).__name__}: {repr(e)}"
+        model = joblib.load(MODEL_PATH)
+        return model, None
+
+    except Exception as e:
+        return None, f"{type(e).__name__}: {repr(e)}"
 
 #fungsi untuk predict
 def predict(model, values: dict):
