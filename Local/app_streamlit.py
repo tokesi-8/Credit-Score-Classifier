@@ -51,8 +51,8 @@ def load_model():
         return None, f"Model file not found at {MODEL_PATH}"
     try:
         return joblib.load(MODEL_PATH), None
-    except Exception as e: 
-        return None, str(e)
+	except Exception as e:
+	    return None, f"{type(e).__name__}: {repr(e)}"
 
 #fungsi untuk predict
 def predict(model, values: dict):
