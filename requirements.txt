@@ -1,2 +1,7 @@
 lightgbm
-joblib
+streamlit
+joblib==1.5.3
+pandas
+numpy
+scikit-learn==1.7.2
+lightgbm
