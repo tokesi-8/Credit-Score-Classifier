@@ -35,7 +35,6 @@
 ## Dataset
 
 The dataset contains **24,998 customer records** with **21 features** covering demographic, financial, credit, loan, and payment information.
-
 * **Target:** `Credit_Score`
 * **Classes:** Poor, Standard, Good
 * **Data split:** 80% training, 20% testing
