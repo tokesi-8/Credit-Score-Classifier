@@ -10,7 +10,16 @@
 ![Dashboard Overview](images/1.png)
 ![Dashboard Overview](images/2.png)
 
+## Development Stages
 
+| Stage                 | Description                                                     |
+| --------------------- | --------------------------------------------------------------- |
+| **EDA & Modeling**    | Explore, clean, transform, and analyze the dataset.             |
+| **Model Selection**   | Compare and select the top 3 models based on Macro F1-Score.    |
+| **Local Pipeline**    | Build a reproducible end-to-end ML pipeline.                    |
+| **Local Inference**   | Integrate the trained model with Streamlit for prediction.      |
+| **Cloud Deployment**  | Deploy the selected model through AWS SageMaker.                |
+| **Cloud Application** | Host Streamlit on EC2 and connect it to the SageMaker endpoint. |
 
 ## Background Problem
 - Financial institutions need to assess the credit performance of their customers efficiently and consistently.
@@ -23,30 +32,6 @@
     
 - Because the target classes are not perfectly balanced, Macro F1-Score is used as the primary evaluation metric to measure performance across all classes more evenly.
 
-  
-## Project Flow
-
-**EDA & Modeling** → **Model Comparison & Tuning** → **Top 3 Model Selection**  
-↓  
-**End-to-End Local Pipeline** → **Local Streamlit Inference** → **AWS SageMaker**  
-↓  
-**SageMaker Endpoint** ← **Streamlit on EC2**  
-↓  
-**Final Prediction**
-
-
-## Development Stages
-
-| Stage                 | Description                                                     |
-| --------------------- | --------------------------------------------------------------- |
-| **EDA & Modeling**    | Explore, clean, transform, and analyze the dataset.             |
-| **Model Selection**   | Compare and select the top 3 models based on Macro F1-Score.    |
-| **Local Pipeline**    | Build a reproducible end-to-end ML pipeline.                    |
-| **Local Inference**   | Integrate the trained model with Streamlit for prediction.      |
-| **Cloud Deployment**  | Deploy the selected model through AWS SageMaker.                |
-| **Cloud Application** | Host Streamlit on EC2 and connect it to the SageMaker endpoint. |
-
-
 ## Dataset
 
 The dataset contains **24,998 customer records** with **21 features** covering demographic, financial, credit, loan, and payment information.
@@ -54,13 +39,22 @@ The dataset contains **24,998 customer records** with **21 features** covering d
 * **Target:** `Credit_Score`
 * **Classes:** Poor, Standard, Good
 * **Data split:** 80% training, 20% testing
-* **Preprocessing:** Missing-value handling, feature transformation, encoding, scaling, and outlier treatment
+  
+
+## Preprocessing
+
+All preprocessing steps are fitted on the training set only to prevent data leakage.
+
+- **Data Cleaning:** Convert numeric columns stored as objects, replace placeholder values with `Unknown`, and handle negative values using absolute values.
+- **Feature Engineering:** Create `Num_Type_of_Loan` and `Credit_History_Age_Months` from the original features.
+- **Outlier Handling:** Apply IQR clipping, cap `Interest_Rate` at the 99th percentile, and remove corrupted `Monthly_Balance` records.
+- **Feature Transformation:** Apply `RobustScaler` to numerical features, `OrdinalEncoder` to ordinal features, and `OneHotEncoder` to categorical features using a `ColumnTransformer`.
+
 
 ## Insights
 ![Dashboard Overview](images/3.png)
 - **LightGBM** achieved the best performance, with **71.84%** Accuracy and **69.97%** Macro F1-Score, making it the selected model for deployment.
 - **LightGBM** performed best on the Standard class with an F1-Score of 0.75, followed by Poor (0.72) and Good (0.63).
-
 
 ## Repository Structure
 
