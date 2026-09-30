@@ -13,7 +13,7 @@
 
 
 
-# Background Problem
+## Background Problem
 - Financial institutions need to assess the credit performance of their customers efficiently and consistently.
 - Manual credit assessment can be time-consuming, especially when dealing with a large number of customers. This project applies a data-driven classification approach to automatically assess customer credit profiles based on their financial, credit, and payment behavior.
 
@@ -23,19 +23,36 @@
   - Good
     
 - Because the target classes are not perfectly balanced, Macro F1-Score is used as the primary evaluation metric to measure performance across all classes more evenly.
+  
+## Project Flow
 
-# Project Flow
-The project is developed progressively from experimentation to deployment :
-EDA & Modeling │ ▼ Model Comparison & Tuning │ ▼ Select Top 3 Models │ ▼ End-to-End Local Pipeline │ ▼ Local Streamlit Inference │ ▼ AWS SageMaker Deployment │ ▼ SageMaker Endpoint ▲ │ Streamlit on EC2 │ ▼ Final Prediction
+**EDA & Modeling**
+↓
+**Model Comparison & Tuning**
+↓
+**Top 3 Model Selection**
+↓
+**End-to-End Local Pipeline**
+↓
+**Local Streamlit Inference**
+↓
+**AWS SageMaker Deployment**
+↓
+**SageMaker Endpoint** ← **Streamlit on EC2**
+↓
+**Final Prediction**
 
-# Development Stages
-Stage	Description
-EDA & Modeling	Explore, clean, transform, and analyze the dataset while comparing multiple classification models.
-Model Selection	Select the top three models based on Macro F1-Score.
-Local Pipeline	Convert the notebook workflow into a reproducible end-to-end pipeline.
-Local Inference	Integrate the trained models with a Streamlit application for prediction.
-Cloud Deployment	Adapt the pipeline for AWS and deploy the model through SageMaker.
-Cloud Application	Deploy Streamlit on EC2, which sends prediction requests to the SageMaker endpoint.
+## Development Stages
+
+| Stage                 | Description                                                     |
+| --------------------- | --------------------------------------------------------------- |
+| **EDA & Modeling**    | Explore, clean, transform, and analyze the dataset.             |
+| **Model Selection**   | Compare and select the top 3 models based on Macro F1-Score.    |
+| **Local Pipeline**    | Build a reproducible end-to-end ML pipeline.                    |
+| **Local Inference**   | Integrate the trained model with Streamlit for prediction.      |
+| **Cloud Deployment**  | Deploy the selected model through AWS SageMaker.                |
+| **Cloud Application** | Host Streamlit on EC2 and connect it to the SageMaker endpoint. |
+
 
 ## Dataset
 
@@ -82,7 +99,7 @@ Credit-Score-Classifier/
 └── requirements.txt                            # Project dependencies
 ```
 
-# Running the Application
+## Running the Application Locally
 
 The application can be run locally. Make sure the model file `models/model_lightgbm.pkl` is available before starting the application.
 
