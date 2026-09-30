@@ -51,12 +51,21 @@ def load_model():
         return None, f"Model file not found at {MODEL_PATH}"
 
     try:
+        with open(MODEL_PATH, "rb") as f:
+            first_bytes = f.read(20)
+
         model = joblib.load(MODEL_PATH)
         return model, None
 
     except Exception as e:
         import traceback
-        return None, traceback.format_exc()
+
+        return None, (
+            f"Path: {MODEL_PATH}\n"
+            f"Size: {MODEL_PATH.stat().st_size} bytes\n"
+            f"First bytes: {first_bytes!r}\n\n"
+            f"{traceback.format_exc()}"
+        )
 
 #fungsi untuk predict
 def predict(model, values: dict):
