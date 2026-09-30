@@ -1,15 +1,11 @@
 #!/bin/bash
-# Bootstrap script for an EC2 instance hosting the Streamlit app.
-# Paste into EC2 launch wizard -> Advanced details -> User data.
-# Edit the three variables below before launching.
-
 set -eu
 
 # -------- EDIT THESE -----------------------------------------------------
-GIT_REPO="https://github.com/<your-handle>/<your-repo>.git"
+GIT_REPO="https://github.com/tokesi-8/Credit-Score-Classifier.git"
 SUBFOLDER=""                  # path inside repo; leave empty if app at root
 APP_FILE="streamlit_app.py"
-ENDPOINT_NAME="wine-endpoint"
+ENDPOINT_NAME="CreditScore-endpoint"
 # -------------------------------------------------------------------------
 
 REGION="us-east-1"
